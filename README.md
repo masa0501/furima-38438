@@ -11,9 +11,7 @@
 |last_name          | string  | null: false              |
 |first_name_kana    | string  | null: false              |
 |last_name_kana     | string  | null: false              |
-|year_id            | integer | null: false              |
-|month_id           | integer | null: false              |
-|day_id             | integer | null: false              |
+|birthday_id        | integer | null: false              |
 
 
 ### Association
@@ -29,11 +27,11 @@
 | name               | string      | null: false                    |
 | explanation        | text        | null: false                    |
 | price              | integer     | null: false                    |
-| category_id        | string      | null: false                    |
-| condition_id       | string      | null: false                    |
-| delivery_charge_id | string      | null: false                    |
-| area_id            | string      | null: false                    |
-| days_id            | string      | null: false                    |
+| category_id        | integer     | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer     | null: false                    |
+| area_id            | integer     | null: false                    |
+| days_id            | integer     | null: false                    |
 | user               | references  | null: false, foreign_key: true |
 
 ### Association
@@ -55,7 +53,7 @@
 
 
 - belongs_to :item
-- has_one :addresses
+- has_one :address
 - belongs_to :user
 
 
@@ -75,4 +73,4 @@
 ### Assosiation
 
 
-- be_longs_to :order
+- belongs_to :order
