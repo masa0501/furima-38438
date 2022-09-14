@@ -2,12 +2,18 @@
 
 ## usersテーブル
 
-| colum             | Type   | Options                  |
-| ----------------- | ------ | ------------------------ |
-|email              | string | null: false unique: true |
-|password           | string | null: false              |
-|encrypted_password | string | null: false              |
-|nickname           | string | null: false              |
+| colum             | Type    | Options                  |
+| ----------------- | ------- | ------------------------ |
+|email              | string  | null: false unique: true |
+|encrypted_password | string  | null: false              |
+|nickname           | string  | null: false              |
+|first_name         | string  | null: false              |
+|last_name          | string  | null: false              |
+|first_name_kana    | string  | null: false              |
+|last_name_kana     | string  | null: false              |
+|year_id            | integer | null: false              |
+|month_id           | integer | null: false              |
+|day_id             | integer | null: false              |
 
 
 ### Association
@@ -33,8 +39,8 @@
 ### Association
 
 
-- belongs_to :orders
-- belongs_to :users
+- has_one :order
+- belongs_to :user
 
 ## ordersテーブル
 
@@ -48,24 +54,25 @@
 ### Assosiation
 
 
-- has_many :items
+- belongs_to :item
 - has_one :addresses
-- belongs_to :users
+- belongs_to :user
 
 
 ## addressesテーブル
 
-| Column          | Type        | Options     |
-| --------------- | ----------- | ----------- |
-| post_code       | string      | null: false |
-| prefectures_id  | integer     | null: false |
-| address         | string      | null: false |
-| city            | string      | null: false |
-| building        | string      | null: false |
-| phone_number    | string      | null: false |
+| Column          | Type        | Options                        |
+| --------------- | ----------- | ------------------------------ |
+| post_code       | string      | null: false                    |
+| prefectures_id  | integer     | null: false                    |
+| address         | string      | null: false                    |
+| city            | string      | null: false                    |
+| building        | string      |                                |
+| phone_number    | string      | null: false                    |
+| order           | references  | null: false, foreign_key: true |
 
 
 ### Assosiation
 
 
-- be_longs_to :orders
+- be_longs_to :order
