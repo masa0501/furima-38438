@@ -21,6 +21,6 @@ end
 
 private
 
-  def prototype_params
-    params.require(:item).permit(:name, :explanation, :price, :category_id, :condition_id, :delivery_charge_id, :area_id, :days_id).merge(user_id: current_user.id)
+  def item_params
+    params.require(:item).permit(:image,:name, :explanation, :price, :category_id, :condition_id, :delivery_charge_id, :area_id, :days_id).merge(user_id: current_user.id)
   end
