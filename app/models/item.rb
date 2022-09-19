@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :days
   has_one_attached :image
+  belongs_to :user
 
   validates :name, presence: true
   validates :image, presence: true
