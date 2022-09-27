@@ -9,8 +9,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :order
 
-
-
   validates :name, presence: true
   validates :image, presence: true
   validates :explanation, presence: true

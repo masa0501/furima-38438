@@ -20,7 +20,9 @@ class OrdersController < ApplicationController
 
   def order_params
     item = Item.find(params[:item_id])
-    params.require(:order_address).permit(:post_code, :area_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: item.id, token: params[:token])
+    params.require(:order_address).permit(:post_code, :area_id, :city, :address, :building, :phone_number).merge(
+      user_id: current_user.id, item_id: item.id, token: params[:token]
+    )
   end
 
   def set_item
@@ -28,16 +30,15 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price,    
-      card: order_params[:token],    
-      currency: 'jpy'                 
+      amount: @item.price,
+      card: order_params[:token],
+      currency: 'jpy'
     )
   end
 
   def self_shopping
     redirect_to root_path if current_user.id == @item.user.id
   end
-  
 end
