@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item
-
+  before_action :self_shopping
   def index
     @order_address = OrderAddress.new
   end
@@ -35,4 +35,9 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 
     )
   end
+
+  def self_shopping
+    redirect_to root_path if current_user.id == @item.user.id
+  end
+  
 end
