@@ -7,7 +7,7 @@ class OrderAddress
     validates :area_id, numericality: { other_than: 1 }
     validates :city
     validates :address
-    validates :phone_number, numericality: { only_integer: true },format: { with: /\A\d{10,11}\z/ }
+    validates :phone_number, numericality: { only_integer: true }, format: { with: /\A\d{10,11}\z/ }
     validates :user_id
     validates :item_id
     validates :token
